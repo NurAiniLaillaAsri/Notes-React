@@ -39,7 +39,6 @@ input::placeholder, textarea::placeholder {
   color: white;
 }
 
-
 .note-app__body {
   max-width: 1000px;
   margin: 16px auto;
@@ -49,6 +48,10 @@ input::placeholder, textarea::placeholder {
 .note-app__body h2 {
   font-weight: normal;
   margin: 16px 0;
+}
+
+.note-app__empty {
+  padding: 10% 43%;
 }
 
 .note-input {

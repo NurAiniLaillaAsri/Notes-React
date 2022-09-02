@@ -22,7 +22,13 @@ class NoteApp extends React.Component {
   }
   
   onArchiveHandler(id) {
-
+    const notes = this.state.notes.map(note => {
+      if (note.id === id) {
+        note.archived = !note.archived;
+      }
+      return note;
+    });
+    this.setState({ notes });
   }
 
   onAddNoteHandler({ title, body }) {
@@ -55,8 +61,10 @@ class NoteApp extends React.Component {
         <div className='note-app__body h2'>
           <h2>Catatan Aktif</h2>
           <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} onArchive={this.onArchiveHandler} archived={false} />
+          {this.state.notes.filter(note => note.archived !== true).length === 0 && <p className='note-app__empty'>Tidak ada catatan</p>}
           <h2>Arsip</h2>
           <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} onArchive={this.onArchiveHandler} archived={true} />
+          {this.state.notes.filter(note => note.archived === true).length === 0 && <p className='note-app__empty'>Tidak ada catatan</p>}
         </div>
       </div>
     )
